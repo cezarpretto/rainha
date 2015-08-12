@@ -81,3 +81,8 @@ body {
     border-bottom: 0;
   }
 }
+
+.fixed-addon{
+  min-width: 100px;
+  text-align: left;
+}

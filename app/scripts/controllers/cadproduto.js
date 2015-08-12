@@ -12,7 +12,26 @@ angular.module('rainhaApp')
     auth.isLoggedIn();
     $scope.fotos = {};
     $scope.produto = new produto.Produto();
-    //console.log($scope.produto);
+    $scope.listaCategorias = [];
+    $scope.listaSubcategorias = [];
+    var getCategorias = function(){
+      produtoService.getCategorias().success(function(retorno){
+        console.log(retorno);
+        $scope.listaCategorias = retorno;
+      }).error(function(err){
+        console.error(err);
+      });
+    };
+    getCategorias();
+
+    $scope.selecionaCategoria = function(){
+      $scope.listaSubcategorias = $scope.produto.categoria.subcategorias;
+      console.log($scope.listaSubcategorias);
+    };
+
+    $scope.salvar = function(){
+      console.log($scope.produto);
+    };
 
     $scope.carregar = function(){
       angular.forEach($scope.fotos, function(item){

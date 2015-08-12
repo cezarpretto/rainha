@@ -7,29 +7,43 @@
   <div class="col-sm-6">
     <div class="panel panel-default">
       <div class="panel-body">
-        <form name="frmCadProduto">
+        <form name="frmCadProduto" ng-submit="salvar()">
           <div class="input-group">
-            <span class="input-group-addon">Nome:</span>
+            <span class="input-group-addon fixed-addon">Nome:</span>
             <input type="text" class="form-control" placeholder="Nome" ng-model="produto.nome" required="required">
           </div>
           <br />
           <div class="input-group">
-            <span class="input-group-addon">Código:</span>
+            <span class="input-group-addon fixed-addon">Código:</span>
             <input type="text" class="form-control" placeholder="Código" ng-model="produto.codigo" required="required">
           </div>
           <br />
           <div class="input-group">
-            <span class="input-group-addon">Valor:</span>
+            <span class="input-group-addon fixed-addon">Categoria:</span>
+            <select class="form-control" required="required" ng-model="produto.categoria" ng-options="c.descricao for c in listaCategorias" ng-change="selecionaCategoria()">
+
+            </select>
+          </div>
+          <br />
+          <div class="input-group">
+            <span class="input-group-addon fixed-addon">Subcategoria:</span>
+            <select class="form-control" required="required" ng-model="produto.categoria.subcategoria" ng-options="s.descricao for s in listaSubcategorias" ng-disabled="listaSubcategorias.length === 0">
+
+            </select>
+          </div>
+          <br />
+          <div class="input-group">
+            <span class="input-group-addon fixed-addon">Valor:</span>
             <input type="text" class="form-control" placeholder="Valor" ui-money-mask="2" ng-model="produto.valor" required="required">
           </div>
           <br />
           <div class="input-group">
-            <span class="input-group-addon">Desconto:</span>
+            <span class="input-group-addon fixed-addon">Desconto:</span>
             <input type="text" class="form-control" placeholder="Desconto" ui-money-mask="2" ng-model="produto.desconto" required="required">
           </div>
           <br />
           <div class="input-group">
-            <span class="input-group-addon">Imagens:</span>
+            <span class="input-group-addon fixed-addon">Imagens:</span>
             <input type="file" class="form-control" ng-model="fotos" multiple base-sixty-four-input required="required">
             <button type="button" class="btn btn-primary btn-block" ng-click="carregar()">
               CARREGAR IMAGENS
@@ -37,7 +51,7 @@
           </div>
           <br />
           <div class="input-group">
-            <span class="input-group-addon">Descrição</span>
+            <span class="input-group-addon fixed-addon">Descrição</span>
             <textarea class="form-control" placeholder="Descrição" rows="10" ng-model="produto.descricao" required="required"></textarea>
           </div>
           <br />
