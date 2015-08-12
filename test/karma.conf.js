@@ -38,6 +38,7 @@ module.exports = function(config) {
       'bower_components/br-validations/releases/br-validations.js',
       'bower_components/string-mask/src/string-mask.js',
       'bower_components/angular-input-masks/angular-input-masks-standalone.min.js',
+      'bower_components/angular-growl-v2/build/angular-growl.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

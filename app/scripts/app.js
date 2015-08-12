@@ -19,7 +19,8 @@ angular
     'ngTouch',
     'naif.base64',
     'angular-loading-bar',
-    'ui.utils.masks'
+    'ui.utils.masks',
+    'angular-growl'
   ])
   .config(function ($routeProvider) {
     $routeProvider

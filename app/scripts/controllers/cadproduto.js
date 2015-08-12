@@ -8,7 +8,7 @@
  * Controller of the rainhaApp
  */
 angular.module('rainhaApp')
-  .controller('CadprodutoCtrl', ['AuthService', '$scope', 'ProdutoModel', 'ProdutoService', function (auth, $scope, produto, produtoService) {
+  .controller('CadprodutoCtrl', ['AuthService', '$scope', 'ProdutoModel', 'ProdutoService', 'growl', function (auth, $scope, produto, produtoService, growl) {
     auth.isLoggedIn();
     $scope.fotos = {};
     $scope.produto = new produto.Produto();
@@ -31,6 +31,13 @@ angular.module('rainhaApp')
 
     $scope.salvar = function(){
       console.log($scope.produto);
+      produtoService.insertProduto($scope.produto).success(function(retorno){
+        console.log(retorno);
+        $scope.produto = new produto.Produto();
+        growl.success('Produto inserido com sucesso', {ttl: 3000});
+      }).error(function(err){
+        console.error(err);
+      })
     };
 
     $scope.carregar = function(){
