@@ -12,7 +12,7 @@ angular.module('rainhaApp')
     $scope.fotos = {};
     $scope.imagens = [];
     $scope.listaProdutos = [];
-    $scope.mostra = function(){
+    /*$scope.mostra = function(){
       console.log($scope.fotos);
       angular.forEach($scope.fotos, function(item){
         var stringImage = 'data:' + item.filetype + ';base64,' + item.base64;
@@ -22,7 +22,7 @@ angular.module('rainhaApp')
         console.log($scope.canvas);
         img.src = stringImage;
       });
-    };
+    }*/
 
     var getProdutos = function(){
       var p = new produto.Produto();
@@ -35,7 +35,7 @@ angular.module('rainhaApp')
         $scope.listaProdutos = retorno;
       }).error(function(err){
         console.error(err);
-      })
+      });
     };
     getProdutos();
   }]);
