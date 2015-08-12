@@ -16,7 +16,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'naif.base64',
+    'angular-loading-bar',
+    'ui.utils.masks'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -35,12 +38,33 @@ angular
         controller: 'ContatoCtrl',
         controllerAs: 'contato'
       })
-      .when('/produto', {
+      .when('/produto/:idProduto', {
         templateUrl: 'views/produto.html',
         controller: 'ProdutoCtrl',
         controllerAs: 'produto'
       })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl',
+        controllerAs: 'admin'
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
+      .when('/cadProduto', {
+        templateUrl: 'views/cadproduto.html',
+        controller: 'CadprodutoCtrl',
+        controllerAs: 'cadProduto'
+      })
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+
+  .config(['$httpProvider', function ($httpProvider) {
+      //$httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
+      $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+      //$httpProvider.defaults.headers.delete = { 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' };
+  }]);

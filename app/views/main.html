@@ -63,17 +63,20 @@
 <div class="row">
   <div class="panel panel-success">
     <div class="panel-body">
-      <div class="col-sm-3">
+      <div class="col-sm-3" ng-repeat="p in listaProdutos">
         <div class="panel panel-info">
           <div class="panel-body">
             <div class="thumbnail">
-              <img src="http://static5.kabum.com.br/produtos/fotos/8565/8565_index_g.jpg" alt="" />
+              <img ng-src="{{p.imagens[0].imagem}}" alt="" />
             </div>
-            <h4 class="text-center text-info">Memória Kingstone DDR3 4GB</h4>
-            <h2 class="text-center text-danger"><strong>R$ 200,00</strong></h2>
+            <h4 class="text-center text-info">{{p.nome}}</h4>
+            <h2 class="text-center text-danger"><strong>{{p.valor | currency}}</strong></h2>
+            <a class="btn btn-sm btn-info btn-block" href="#/produto/{{p.id}}">Ver mais...</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <!--<input  type="file" ng-model="fotos" multiple base-sixty-four-input>
+  <button class="btn btn-sm btn-success" ng-click="mostra()" parser="resizeImage">Teste</button>-->
 </div>

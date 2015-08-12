@@ -1,5 +1,45 @@
 <div class="row">
   <div class="col-sm-12">
-    <h2 class="text-info">Tablet Samsung 10"</h2>
+    <h2 class="text-info">{{produtoSelecionado.nome}}</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel">
+      <div class="panel-body">
+        <div class="row">
+          <div class="thumbnail">
+            <img src="{{imagemSelecionada.imagem}}" width="300" alt="" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="col-sm-3" ng-repeat="i in produtoSelecionado.imagens">
+                <a href="" ng-click="selecionaImagem(i)" class="thumbnail">
+                  <img ng-src="{{i.imagem}}" alt="{{produtoSelecionado.descricao}}" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel">
+      <div class="panel-body">
+        <div class="row">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h2 class="text-danger text-center">Para maiores informações ligue (66) 3468-1689</h2>
+              <a href="#/contato" class="btn btn-lg btn-danger btn-block"><span class="glyphicon glyphicon-envelope"></span> Entrar em contato</a><br /><br />
+              <strong>Descrição:</strong><br /><br />
+              {{produtoSelecionado.descricao}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -32,6 +32,12 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
+      'bower_components/angular-base64-upload/src/angular-base64-upload.js',
+      'bower_components/angular-loading-bar/build/loading-bar.js',
+      'bower_components/angular-i18n/angular-locale_pt-br.js',
+      'bower_components/br-validations/releases/br-validations.js',
+      'bower_components/string-mask/src/string-mask.js',
+      'bower_components/angular-input-masks/angular-input-masks-standalone.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

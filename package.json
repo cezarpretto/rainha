@@ -35,5 +35,8 @@
   },
   "scripts": {
     "test": "grunt test"
+  },
+  "dependencies": {
+    "angular-base64-upload": "^0.1.12"
   }
 }

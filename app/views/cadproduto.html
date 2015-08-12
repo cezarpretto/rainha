@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Cadastro de produtos</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form name="frmCadProduto">
+          <div class="input-group">
+            <span class="input-group-addon">Nome:</span>
+            <input type="text" class="form-control" placeholder="Nome" ng-model="produto.nome" required="required">
+          </div>
+          <br />
+          <div class="input-group">
+            <span class="input-group-addon">Código:</span>
+            <input type="text" class="form-control" placeholder="Código" ng-model="produto.codigo" required="required">
+          </div>
+          <br />
+          <div class="input-group">
+            <span class="input-group-addon">Valor:</span>
+            <input type="text" class="form-control" placeholder="Valor" ui-money-mask="2" ng-model="produto.valor" required="required">
+          </div>
+          <br />
+          <div class="input-group">
+            <span class="input-group-addon">Desconto:</span>
+            <input type="text" class="form-control" placeholder="Desconto" ui-money-mask="2" ng-model="produto.desconto" required="required">
+          </div>
+          <br />
+          <div class="input-group">
+            <span class="input-group-addon">Imagens:</span>
+            <input type="file" class="form-control" ng-model="fotos" multiple base-sixty-four-input required="required">
+            <button type="button" class="btn btn-primary btn-block" ng-click="carregar()">
+              CARREGAR IMAGENS
+            </button>
+          </div>
+          <br />
+          <div class="input-group">
+            <span class="input-group-addon">Descrição</span>
+            <textarea class="form-control" placeholder="Descrição" rows="10" ng-model="produto.descricao" required="required"></textarea>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-primary btn-block" ng-disabled="frmCadProduto.$invalid">
+            Cadastrar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4>Imagens:</h4>
+        <div ng-if="produto.imagens.length > 0" class="alert alert-info"><p>Selecione uma imagem para ser a capa</p></div>
+        <div class="list-group">
+          <div class="list-group-item {{f.capa === true ? 'active' : ''}}" ng-repeat="f in produto.imagens">
+            <button type="button" class="btn btn-danger btn-sm pull-right" ng-click="removeImagem(f)">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <a href="" class="thumbnail" ng-click="selecionaCapa(f)">
+              <img width="100" ng-src="{{f.imagem}}" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

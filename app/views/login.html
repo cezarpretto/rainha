@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-sm-4">
+
+  </div>
+  <div class="col-sm-4">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <span class="glyphicon glyphicon-user"></span> Login
+      </div>
+      <div class="panel-body">
+        <form name="frmLogin" ng-submit="logar()">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="input-group">
+                <span class="input-group-addon">Usuário</span>
+                <input type="text" class="form-control" placeholder="Usuário" ng-model="usuarioLogar.username">
+              </div>
+              <br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="input-group">
+                <span class="input-group-addon">Senha</span>
+                <input type="password" class="form-control" placeholder="Senha" ng-model="usuarioLogar.senha">
+              </div>
+              <br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary btn-block">
+                LOGAR
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
