@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="panel panel-success">
+    <div class="panel-body">
+      <div class="col-sm-3" ng-repeat="p in resultados">
+        <div class="panel panel-info">
+          <div class="panel-body" style="min-height: 400px;">
+            <div class="thumbnail">
+              <img ng-src="{{p.imagens[0].imagem}}" alt="" />
+            </div>
+            <h4 class="text-center text-info">{{p.nome | limitTo: 35}}</h4>
+            <div ng-if="p.desconto > 0">
+              <h5 class="text-danger text-center">De {{p.valor | currency: 'R$ '}} por</h5>
+              <h2 class="text-center text-danger"><strong>{{p.valor - p.desconto | currency}}</strong></h2>
+            </div>
+            <div ng-if="p.desconto <= 0">
+              <h2 class="text-center text-danger"><strong>{{p.valor - p.desconto | currency}}</strong></h2>
+            </div>
+            <a class="btn btn-sm btn-info btn-block" href="#/produto/{{p.id}}">Ver mais...</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="alert alert-warning" ng-show="resultados.length === 0">
+          <strong>Não encontramos nada :(</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<input  type="file" ng-model="fotos" multiple base-sixty-four-input>
+  <button class="btn btn-sm btn-success" ng-click="mostra()" parser="resizeImage">Teste</button>-->
+</div>

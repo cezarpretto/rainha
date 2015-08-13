@@ -32,8 +32,18 @@
         <div class="row">
           <div class="panel panel-default">
             <div class="panel-body">
-              <h2 class="text-danger text-center">Para maiores informações ligue (66) 3468-1689</h2>
-              <a href="#/contato" class="btn btn-lg btn-danger btn-block"><span class="glyphicon glyphicon-envelope"></span> Entrar em contato</a><br /><br />
+              <div ng-if="produtoSelecionado.desconto > 0">
+                <h5 class="text-danger">De {{produtoSelecionado.valor | currency: 'R$ '}} por</h5>
+                <h2 class="text-info"><strong>{{produtoSelecionado.valor - produtoSelecionado.desconto | currency}}</strong></h2>
+              </div>
+              <div ng-if="produtoSelecionado.desconto <= 0">
+                <h2 class="text-danger"><strong>{{produtoSelecionado.valor - produtoSelecionado.desconto | currency}}</strong></h2>
+              </div>
+              <div class="col-sm-12">
+                <a href="#/contato" class="btn btn-lg btn-danger btn-block"><span class="glyphicon glyphicon-envelope"></span> Entrar em contato</a>
+                <h4 class="text-danger text-center">Para maiores informações ligue (66) 3468-1689</h4>
+                <br /><br />
+              </div>
               <strong>Descrição:</strong><br /><br />
               {{produtoSelecionado.descricao}}
             </div>

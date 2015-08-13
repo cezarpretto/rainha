@@ -27,4 +27,15 @@ angular.module('rainhaApp')
       this.imagem = undefined;
       this.capa = false;
     };
+
+    this.Categoria = function(){
+      this.id = undefined;
+      this.descricao = undefined;
+    };
+
+    this.Subcategoria = function(){
+      this.id = undefined;
+      this.idCategoria = undefined;
+      this.descricao = undefined;
+    };
   });

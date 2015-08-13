@@ -8,21 +8,11 @@
  * Controller of the rainhaApp
  */
 angular.module('rainhaApp')
-  .controller('MainCtrl', ['$scope', 'ProdutoModel', 'ProdutoService', function ($scope, produto, produtoService) {
+  .controller('MainCtrl', ['$scope', 'ProdutoModel', 'ProdutoService', 'CategoriaService', function ($scope, produto, produtoService, categoriaService) {
     $scope.fotos = {};
     $scope.imagens = [];
     $scope.listaProdutos = [];
-    /*$scope.mostra = function(){
-      console.log($scope.fotos);
-      angular.forEach($scope.fotos, function(item){
-        var stringImage = 'data:' + item.filetype + ';base64,' + item.base64;
-        var img = new Image();
-        $scope.canvas = "<canvas id='pgcanvas' width='400' height='30'  background-color: #F00'/>";
-        //var ctx = $scope.canvas.getContext('2d');
-        console.log($scope.canvas);
-        img.src = stringImage;
-      });
-    }*/
+    $scope.destaques = [];
 
     var getProdutos = function(){
       var p = new produto.Produto();
@@ -38,4 +28,17 @@ angular.module('rainhaApp')
       });
     };
     getProdutos();
+
+    var getDestaques = function(){
+      var p = new produto.Produto();
+      p.status = 'promocao';
+      p.promocao = true;
+      produtoService.getProdutos(p).success(function(retorno){
+        console.log(retorno);
+        $scope.destaques = retorno;
+      }).error(function(err){
+        console.error(err);
+      });
+    };
+    getDestaques();
   }]);

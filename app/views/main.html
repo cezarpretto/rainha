@@ -4,59 +4,28 @@
       <strong>Destaques</strong>
     </div>
     <div class="panel-body">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          </ol>
-
+      <carousel interval="myInterval" no-wrap="noWrapSlides">
+        <slide ng-repeat="d in destaques" active="d.active">
           <div class="container">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-6 text-center">
-                      <img src="http://iacom.s8.com.br/produtos/01/00/item/122533/9/122533905G1.jpg" alt="...">
-                    </div>
-                    <div class="col-sm-6">
-                      <h2 class="text-info">Tablet Samsung 10"</h2>
-                      <h5 class="text-danger">De R$ 599,00 por apenas</h5>
-                      <h1 class="text-danger">R$ 499,00</h1>
-                      <a href="#" class="btn btn-xs btn-info">Saiba mais...</a>
-                    </div>
-                  </div>
-                </div>
+            <div class="row">
+              <div class="col-sm-6 text-center">
+                <img ng-src="{{d.imagens[0].imagem}}" alt="...">
               </div>
-              <div class="item">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-6 text-center">
-                      <img src="http://iacom.s8.com.br/produtos/01/00/item/119804/1/119804153G1.png" alt="...">
-                    </div>
-                    <div class="col-sm-6">
-                      <h2 class="text-info">Console Xbox One + Kinect</h2>
-                      <h5 class="text-danger">De R$ 1800,00 por apenas</h5>
-                      <h1 class="text-danger">R$ 1699,00</h1>
-                      <a href="#" class="btn btn-xs btn-info">Saiba mais...</a>
-                    </div>
-                  </div>
+              <div class="col-sm-6">
+                <h2 class="text-info">{{d.nome | limitTo: 60}}</h2>
+                <div ng-if="d.desconto > 0">
+                  <h5 class="text-danger">De {{d.valor | currency: 'R$ '}} por apenas</h5>
+                  <h1 class="text-danger">{{d.valor - d.desconto | currency: 'R$ '}}</h1>
                 </div>
+                <div ng-if="d.desconto <= 0">
+                  <h1 class="text-danger">{{d.valor - d.desconto | currency: 'R$ '}}</h1>
+                </div>
+                <a href="#/produto/{{d.id}}" class="btn btn-xs btn-info">Saiba mais...</a>
               </div>
             </div>
           </div>
-
-          <!-- Controls -->
-          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
+        </slide>
+      </carousel>
     </div>
   </div>
 </div>
@@ -65,12 +34,18 @@
     <div class="panel-body">
       <div class="col-sm-3" ng-repeat="p in listaProdutos">
         <div class="panel panel-info">
-          <div class="panel-body">
+          <div class="panel-body" style="min-height: 400px;">
             <div class="thumbnail">
               <img ng-src="{{p.imagens[0].imagem}}" alt="" />
             </div>
-            <h4 class="text-center text-info">{{p.nome}}</h4>
-            <h2 class="text-center text-danger"><strong>{{p.valor | currency}}</strong></h2>
+            <h4 class="text-center text-info">{{p.nome  | limitTo: 35}}</h4>
+            <div ng-if="p.desconto > 0">
+              <h5 class="text-danger text-center">De {{p.valor | currency: 'R$ '}} por</h5>
+              <h2 class="text-center text-danger"><strong>{{p.valor - p.desconto | currency}}</strong></h2>
+            </div>
+            <div ng-if="p.desconto <= 0">
+              <h2 class="text-center text-danger"><strong>{{p.valor - p.desconto | currency}}</strong></h2>
+            </div>
             <a class="btn btn-sm btn-info btn-block" href="#/produto/{{p.id}}">Ver mais...</a>
           </div>
         </div>

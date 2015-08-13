@@ -8,15 +8,19 @@
  * Controller of the rainhaApp
  */
 angular.module('rainhaApp')
-  .controller('CadprodutoCtrl', ['AuthService', '$scope', 'ProdutoModel', 'ProdutoService', 'growl', function (auth, $scope, produto, produtoService, growl) {
+  .controller('CadprodutoCtrl', ['AuthService', '$scope', 'ProdutoModel', 'ProdutoService', 'growl', 'ModalService', 'CategoriaService', function (auth, $scope, produto, produtoService, growl, modal, categoriaService) {
     auth.isLoggedIn();
+    //modal.show('mdCadProduto');
     $scope.fotos = {};
     $scope.produto = new produto.Produto();
+    $scope.produtoPesquisa = new produto.Produto();
     $scope.listaCategorias = [];
     $scope.listaSubcategorias = [];
+    $scope.listaProdutos = [];
+    $scope.edicao = false;
+
     var getCategorias = function(){
       produtoService.getCategorias().success(function(retorno){
-        console.log(retorno);
         $scope.listaCategorias = retorno;
       }).error(function(err){
         console.error(err);
@@ -25,19 +29,73 @@ angular.module('rainhaApp')
     getCategorias();
 
     $scope.selecionaCategoria = function(){
-      $scope.listaSubcategorias = $scope.produto.categoria.subcategorias;
-      console.log($scope.listaSubcategorias);
+      categoriaService.getSubcategorias($scope.produto.categoria.id).success(function(retorno){
+        $scope.listaSubcategorias = retorno;
+      }).error(function(err){
+        console.error(err);
+      });
     };
+
+    /*$scope.selecionaCategoria = function(){
+      $scope.listaSubcategorias = $scope.produto.categoria.subcategorias;
+    };*/
 
     $scope.salvar = function(){
       console.log($scope.produto);
-      produtoService.insertProduto($scope.produto).success(function(retorno){
+      if($scope.edicao){
+        produtoService.updateProduto($scope.produto).success(function(retorno){
+          $scope.produto = new produto.Produto();
+          growl.success('Edição concluída', {ttl: 3000});
+          modal.hide('mdCadProduto');
+        }).error(function(err){
+          console.error(err);
+        });
+      }else{
+        produtoService.insertProduto($scope.produto).success(function(retorno){
+          $scope.produto = new produto.Produto();
+          growl.success('Produto inserido com sucesso', {ttl: 3000});
+          modal.hide('mdCadProduto');
+        }).error(function(err){
+          console.error(err);
+        });
+      }
+    };
+
+    $scope.deleteProduto = function(idProduto){
+      if(window.confirm('Tem certeza que deseja deletar esse produto?')){
+        produtoService.deleteProduto(idProduto).success(function(retorno){
+          growl.success('Produto deletado!', {ttl: 3000});
+          $scope.produtoPesquisa = new produto.Produto();
+          $scope.listaProdutos = [];
+        }).error(function(err){
+          growl.error(err.message);
+          console.error(err);
+        });
+      }
+    };
+
+    $scope.pesquisar = function(){
+      $scope.produtoPesquisa.status = 'descricao';
+      produtoService.getProdutos($scope.produtoPesquisa).success(function(retorno){
         console.log(retorno);
-        $scope.produto = new produto.Produto();
-        growl.success('Produto inserido com sucesso', {ttl: 3000});
+        $scope.listaProdutos = retorno;
       }).error(function(err){
         console.error(err);
-      })
+        growl.error(err);
+      });
+    };
+
+    $scope.novo = function(){
+      $scope.edicao = false;
+      modal.show('mdCadProduto');
+      $scope.produto = new produto.Produto();
+    };
+
+    $scope.selecionaProduto = function(produto){
+      $scope.edicao = true;
+      $scope.produto = produto;
+      $scope.selecionaCategoria();
+      modal.show('mdCadProduto');
     };
 
     $scope.carregar = function(){

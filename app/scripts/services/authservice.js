@@ -11,6 +11,7 @@ angular.module('rainhaApp')
   .service('AuthService', ['$http', '$location', function ($http, $location) {
     var self = this;
     this.usuarioLogado = JSON.parse(window.localStorage.getItem('usuarioLogado'));
+    this.busca = [];
     this.ip = 'http://192.168.0.22/CoreRI/';
     this.isLoggedIn = function(){
       if(self.usuarioLogado === null){
@@ -21,6 +22,10 @@ angular.module('rainhaApp')
     this.setUsuario = function(usuario){
       self.usuarioLogado = usuario;
       window.localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+    };
+
+    this.setBusca = function(busca){
+      self.busca = busca;
     };
 
     this.login = function(usuario){

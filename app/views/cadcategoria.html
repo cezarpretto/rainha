@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Cadastro de categoria</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="row">
+      <button type="button" class="btn btn-success btn-sm pull-right" ng-click="novo()">
+        NOVO
+      </button>
+      <br />
+    </div>
+    <div class="row">
+      <table class="table table-striped table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>
+              Id
+            </th>
+            <th>
+              Descrição
+            </th>
+            <th>
+              Editar
+            </th>
+            <th>
+              Excluir
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="c in listaCategorias">
+            <td>
+              {{c.id}}
+            </td>
+            <td>
+              {{c.descricao}}
+            </td>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" ng-click="selecionaCategoria(c)">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-danger btn-sm" ng-click="deleteCategoria(c.id)">
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="mdCadCategoria" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Cadastro/Edição Categoria</h4>
+      </div>
+      <form name="frmCadCategoria" ng-submit="salvar()">
+        <div class="modal-body">
+          <div class="panel">
+            <div class="input-group">
+              <span class="input-group-addon">Descrição:</span>
+              <input type="text" class="form-control" placeholder="Descrição" required="required" ng-model="categoria.descricao">
+            </div>
+            <br />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" ng-disabled="frmCadCategoria.$invalid">Cadastrar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancelar()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

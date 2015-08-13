@@ -20,7 +20,9 @@ angular
     'naif.base64',
     'angular-loading-bar',
     'ui.utils.masks',
-    'angular-growl'
+    'angular-growl',
+    'vAccordion',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -58,6 +60,21 @@ angular
         templateUrl: 'views/cadproduto.html',
         controller: 'CadprodutoCtrl',
         controllerAs: 'cadProduto'
+      })
+      .when('/cadCategoria', {
+        templateUrl: 'views/cadcategoria.html',
+        controller: 'CadcategoriaCtrl',
+        controllerAs: 'cadCategoria'
+      })
+      .when('/cadSubcategoria', {
+        templateUrl: 'views/cadsubcategoria.html',
+        controller: 'CadsubcategoriaCtrl',
+        controllerAs: 'cadSubcategoria'
+      })
+      .when('/busca', {
+        templateUrl: 'views/busca.html',
+        controller: 'BuscaCtrl',
+        controllerAs: 'busca'
       })
       .otherwise({
         redirectTo: '/'

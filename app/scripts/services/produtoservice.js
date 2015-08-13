@@ -15,14 +15,18 @@ angular.module('rainhaApp')
     };
 
     this.insertProduto = function(produto){
-      return $http.post(ip + 'produtos/', produto);
+      return $http.post(ip + 'produtos/insert', produto);
+    };
+
+    this.updateProduto = function(produto){
+      return $http.post(ip + 'produtos/update', produto);
     };
 
     this.getCategorias = function(){
       return $http.get(ip + 'categorias');
     };
 
-    this.getSubcategorias = function(){
-
+    this.deleteProduto = function(idProduto){
+      return $http.get(ip + 'produtos/delete/' + idProduto);
     };
   }]);
