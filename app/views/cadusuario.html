@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="row">
+      <h1>Cadastro de Usuário</h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="row">
+      <button type="button" class="btn btn-success btn-sm pull-right" ng-click="novo()">
+        NOVO
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="row">
+      <table class="table table-hover table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>
+              Id
+            </th>
+            <th>
+              Nome
+            </th>
+            <th>
+              Username
+            </th>
+            <th>
+              Editar
+            </th>
+            <th>
+              Excluir
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="u in listaUsuarios">
+            <td>{{u.id}}</td>
+            <td>{{u.nome}}</td>
+            <td>{{u.username}}</td>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" ng-click="selecionaUsuario(u)">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-danger btn-sm" ng-click="delete(u.id)">
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="mdNovoUsuario" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Cadastro/Edição Usuário</h4>
+      </div>
+      <form name="frmCadUsuario" ng-submit="salvar()">
+        <div class="modal-body">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="col-sm-12">
+                <div class="input-group">
+                  <span class="input-group-addon fixed-addon">Nome:</span>
+                  <input type="text" class="form-control" placeholder="Nome" ng-model="usuario.nome" required="required">
+                </div>
+                <br />
+                <div class="input-group">
+                  <span class="input-group-addon fixed-addon">Username:</span>
+                  <input type="text" class="form-control" placeholder="Username" ng-model="usuario.username" required="required">
+                </div>
+                <br />
+                <div class="input-group">
+                  <span class="input-group-addon fixed-addon">Senha:</span>
+                  <input type="password" class="form-control" placeholder="Senha" ng-model="usuario.senha" required="required">
+                </div>
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" ng-disabled="frmCadUsuario.$invalid">Salvar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

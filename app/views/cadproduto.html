@@ -139,6 +139,12 @@
                     <input type="text" class="form-control" placeholder="Desconto" ui-money-mask="2" ng-model="produto.desconto">
                   </div>
                   <br />
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="produto.promocao"> Produto em destaque?
+                    </label>
+                  </div>
+                  <br />
                   <div class="input-group">
                     <span class="input-group-addon fixed-addon">Imagens:</span>
                     <input type="file" class="form-control" ng-model="fotos" multiple base-sixty-four-input>
@@ -147,16 +153,8 @@
                     </button>
                   </div>
                   <br />
-                  <div class="input-group">
-                    <span class="input-group-addon fixed-addon">Descrição</span>
-                    <textarea class="form-control" placeholder="Descrição" rows="10" ng-model="produto.descricao" required="required"></textarea>
-                  </div>
-                  <br />
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" ng-model="produto.promocao"> Produto em destaque?
-                    </label>
-                  </div>
+                  Descrição:
+                  <textarea ui-tinymce class="form-control" placeholder="Descrição" rows="10" ng-model="produto.descricao" required="required"></textarea>
                   <br>
                   <button type="submit" class="btn btn-primary btn-block" ng-disabled="frmCadProduto.$invalid">
                     Cadastrar

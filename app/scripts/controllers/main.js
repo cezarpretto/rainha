@@ -13,6 +13,8 @@ angular.module('rainhaApp')
     $scope.imagens = [];
     $scope.listaProdutos = [];
     $scope.destaques = [];
+    var noImage = new produto.NoImage();
+    $scope.noImage = noImage.imagem;
 
     var getProdutos = function(){
       var p = new produto.Produto();

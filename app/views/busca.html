@@ -15,7 +15,9 @@
             <div ng-if="p.desconto <= 0">
               <h2 class="text-center text-danger"><strong>{{p.valor - p.desconto | currency}}</strong></h2>
             </div>
-            <a class="btn btn-sm btn-info btn-block" href="#/produto/{{p.id}}">Ver mais...</a>
+            <div class="bottom-align-text col-sm-12">
+              <a class="btn btn-sm btn-info btn-block" href="#/produto/{{p.id}}">Ver mais...</a>
+            </div>
           </div>
         </div>
       </div>

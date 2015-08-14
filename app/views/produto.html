@@ -9,10 +9,10 @@
       <div class="panel-body">
         <div class="row">
           <div class="thumbnail">
-            <img src="{{imagemSelecionada.imagem}}" width="300" alt="" />
+            <img src="{{imagemSelecionada.imagem || 'images/noImage.jpg'}}" width="300" alt="" />
           </div>
         </div>
-        <div class="row">
+        <div class="row" ng-if="produtoSelecionado.imagens.length === 0">
           <div class="panel panel-default">
             <div class="panel-body">
               <div class="col-sm-3" ng-repeat="i in produtoSelecionado.imagens">
@@ -45,7 +45,9 @@
                 <br /><br />
               </div>
               <strong>Descrição:</strong><br /><br />
-              {{produtoSelecionado.descricao}}
+              <div>
+                <span ng-bind-html="produtoSelecionado.descricao"></span>
+              </div>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="panel panel-success">
-    <div class="panel-heading">
-      <strong>Destaques</strong>
+    <div class="panel-heading panel-heading-custom">
+      <strong style="color: #FFF;">Destaques</strong>
     </div>
     <div class="panel-body">
       <carousel interval="myInterval" no-wrap="noWrapSlides">
@@ -34,19 +34,25 @@
     <div class="panel-body">
       <div class="col-sm-3" ng-repeat="p in listaProdutos">
         <div class="panel panel-info">
-          <div class="panel-body" style="min-height: 400px;">
+          <div class="panel-body box-produto">
             <div class="thumbnail">
-              <img ng-src="{{p.imagens[0].imagem}}" alt="" />
+              <a href="#/produto/{{p.id}}">
+                <img ng-src="{{p.imagens[0].imagem || 'images/noImage.jpg'}}" alt="" />
+              </a>
             </div>
-            <h4 class="text-center text-info">{{p.nome  | limitTo: 35}}</h4>
-            <div ng-if="p.desconto > 0">
-              <h5 class="text-danger text-center">De {{p.valor | currency: 'R$ '}} por</h5>
-              <h2 class="text-center text-danger"><strong>{{p.valor - p.desconto | currency}}</strong></h2>
+            <a href="#/produto/{{p.id}}">
+              <h4 class="text-center text-info">{{p.nome  | limitTo: 35}}</h4>
+              <div ng-if="p.desconto > 0">
+                <h5 class="text-danger text-center">De {{p.valor | currency: 'R$ '}} por</h5>
+                <h2 class="text-center text-danger"><strong>{{p.valor - p.desconto | currency}}</strong></h2>
+              </div>
+              <div ng-if="p.desconto <= 0">
+                <h2 class="text-center text-danger"><strong>{{p.valor - p.desconto | currency}}</strong></h2>
+              </div>
+            </a>
+            <div class="bottom-align-text col-sm-12">
+              <a class="btn btn-sm btn-info btn-block" href="#/produto/{{p.id}}">Ver mais...</a>
             </div>
-            <div ng-if="p.desconto <= 0">
-              <h2 class="text-center text-danger"><strong>{{p.valor - p.desconto | currency}}</strong></h2>
-            </div>
-            <a class="btn btn-sm btn-info btn-block" href="#/produto/{{p.id}}">Ver mais...</a>
           </div>
         </div>
       </div>

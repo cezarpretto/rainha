@@ -21,6 +21,8 @@ angular.module('rainhaApp')
         $scope.showMenuAdmin = false;
       }
     });
+    var now = new Date();
+    $scope.ano = now.getFullYear();
 
     var getCategorias = function(){
       categoriaService.getCategorias().success(function(retorno){

@@ -22,7 +22,8 @@ angular
     'ui.utils.masks',
     'angular-growl',
     'vAccordion',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ui.tinymce'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -75,6 +76,11 @@ angular
         templateUrl: 'views/busca.html',
         controller: 'BuscaCtrl',
         controllerAs: 'busca'
+      })
+      .when('/cadUsuario', {
+        templateUrl: 'views/cadusuario.html',
+        controller: 'CadusuarioCtrl',
+        controllerAs: 'cadUsuario'
       })
       .otherwise({
         redirectTo: '/'
