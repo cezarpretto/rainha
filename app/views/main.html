@@ -9,7 +9,7 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-6 text-center">
-                <img ng-src="{{d.imagens[0].imagem}}" alt="...">
+                <img ng-src="{{d.imagens[0].imagem || 'images/noImage.jpg'}}" alt="...">
               </div>
               <div class="col-sm-6">
                 <h2 class="text-info">{{d.nome | limitTo: 60}}</h2>
