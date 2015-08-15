@@ -12,7 +12,8 @@ angular.module('rainhaApp')
     var self = this;
     this.usuarioLogado = JSON.parse(window.localStorage.getItem('usuarioLogado'));
     this.busca = [];
-    this.ip = 'http://192.168.0.15/CoreRI/';
+    //this.ip = 'http://192.168.0.15/CoreRI/';
+    this.ip = 'http://rainhainfo.com.br/CoreRI/';
     this.isLoggedIn = function(){
       if(self.usuarioLogado === null){
         $location.path('/login');

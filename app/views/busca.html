@@ -5,7 +5,7 @@
         <div class="panel panel-info">
           <div class="panel-body" style="min-height: 400px;">
             <div class="thumbnail">
-              <img ng-src="{{p.imagens[0].imagem}}" alt="" />
+              <img ng-src="{{p.imagens[0].imagem || 'http://www.jimovel-cia.com.br/img_anuncio/sem_foto.jpg'}}" alt="" />
             </div>
             <h4 class="text-center text-info">{{p.nome | limitTo: 35}}</h4>
             <div ng-if="p.desconto > 0">

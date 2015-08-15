@@ -9,7 +9,7 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-6 text-center">
-                <img ng-src="{{d.imagens[0].imagem || 'images/noImage.jpg'}}" alt="...">
+                <img ng-src="{{d.imagens[0].imagem || 'http://www.jimovel-cia.com.br/img_anuncio/sem_foto.jpg'}}" alt="...">
               </div>
               <div class="col-sm-6">
                 <h2 class="text-info">{{d.nome | limitTo: 60}}</h2>
@@ -37,7 +37,7 @@
           <div class="panel-body box-produto">
             <div class="thumbnail">
               <a href="#/produto/{{p.id}}">
-                <img ng-src="{{p.imagens[0].imagem || 'images/noImage.jpg'}}" alt="" />
+                <img ng-src="{{p.imagens[0].imagem || 'http://www.jimovel-cia.com.br/img_anuncio/sem_foto.jpg'}}" alt="" />
               </a>
             </div>
             <a href="#/produto/{{p.id}}">
