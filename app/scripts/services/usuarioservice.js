@@ -26,4 +26,8 @@ angular.module('rainhaApp')
     this.delete = function(idUsuario){
       return $http.get(ip + 'usuarios/delete/' + idUsuario);
     };
+
+    this.sendMail = function(contato){
+      return $http.post(ip + 'sendMail', contato);
+    };
   }]);

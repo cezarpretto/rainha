@@ -3,12 +3,12 @@
     <h3><span class="glyphicon glyphicon-envelope"></span> Contato</h3>
   </div>
 </div>
-<form name="frmContato">
+<form name="frmContato" ng-submit="sendMail()">
   <div class="row">
     <div class="col-sm-12">
       <div class="input-group">
-        <span class="input-group-addon">Nome</span>
-        <input type="text" class="form-control" placeholder="Nome">
+        <span class="input-group-addon fixed-addon">Nome:</span>
+        <input type="text" class="form-control" placeholder="Nome" ng-model="contato.nome" required="required">
       </div>
       <br>
     </div>
@@ -16,8 +16,8 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="input-group">
-        <span class="input-group-addon">Email</span>
-        <input type="mail" class="form-control" placeholder="Email">
+        <span class="input-group-addon fixed-addon">Email:</span>
+        <input type="mail" class="form-control" placeholder="Email" ng-model="contato.email" required="required">
       </div>
       <br>
     </div>
@@ -25,15 +25,24 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="input-group">
-        <span class="input-group-addon">Mensagem</span>
-        <textarea class="form-control" rows="8" cols="40"></textarea>
+        <span class="input-group-addon fixed-addon">Telefone:</span>
+        <input type="mail" class="form-control" placeholder="Telefone" ui-br-phone-number ng-model="contato.fone" required="required">
       </div>
       <br>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <button type="button" class="btn btn-large btn-block btn-info">Enviar</button>
+      <div class="input-group">
+        <span class="input-group-addon fixed-addon">Mensagem:</span>
+        <textarea class="form-control" rows="8" cols="40" ng-model="contato.mensagem" required="required"></textarea>
+      </div>
+      <br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-large btn-block btn-info" ng-disabled="frmContato.$invalid">Enviar</button>
       <br>
     </div>
   </div>

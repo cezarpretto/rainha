@@ -23,7 +23,8 @@ angular
     'angular-growl',
     'vAccordion',
     'ui.bootstrap',
-    'ui.tinymce'
+    'ui.tinymce',
+    'ui.utils.masks'
   ])
   .config(function ($routeProvider) {
     $routeProvider

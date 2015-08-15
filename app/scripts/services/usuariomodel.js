@@ -15,4 +15,11 @@ angular.module('rainhaApp')
       this.senha = undefined;
       this.foto = undefined;
     };
+
+    this.Contato = function(){
+      this.nome = undefined;
+      this.email = undefined;
+      this.fone = undefined;
+      this.mensagem = undefined;
+    };
   });
